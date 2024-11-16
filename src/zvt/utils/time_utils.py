@@ -36,7 +36,11 @@ def to_pd_timestamp(the_time) -> pd.Timestamp:
     if type(the_time) == float:
         return pd.Timestamp.fromtimestamp(the_time)
 
-    return pd.Timestamp(the_time)
+    try:
+        return pd.Timestamp(the_time)
+    except:
+        print(f"to_pd_timestamp: error time {the_time}")
+        return None
 
 
 def get_local_timezone():
